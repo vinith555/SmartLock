@@ -11,7 +11,7 @@ export class Apiservice {
     private url = 'http://localhost:4200/api/smartlock';
 
     getLockStatus():Observable<boolean[]>{
-      return this.http.get<boolean[]>(this.url);
+      return this.http.get<boolean[]>(`${this.url}/status`);
     }
 
     postFirstLock(Onoroff:boolean){
