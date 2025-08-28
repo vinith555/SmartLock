@@ -1,0 +1,39 @@
+<section>
+  <div class="lock-container">
+    <div class="locks">
+    <h2>Side Lock</h2>
+    <button class="toggle-button" (click)="onClick()">
+      <div class="circle" [ngClass]="{ 'on': onOff }"></div>
+      <p [ngClass]="onOff ? 'toggle-on' : 'toggle-off'"></p>
+    </button>
+    <div class="status-message">
+    {{ onOff ? 'Locked' : 'Unlocked' }}
+    </div>
+  </div>
+   <div class="locks">
+    <h2>Emergency Lock</h2>
+    <button class="toggle-button" (click)="onClick()">
+      <div class="circle" [ngClass]="{ 'on': onOff }"></div>
+      <p [ngClass]="onOff ? 'toggle-on' : 'toggle-off'"></p>
+    </button>
+    <div class="status-message">
+    {{ onOff ? 'Locked' : 'Unlocked' }}
+    </div>
+  </div>
+  </div>
+ <div class="map-container">
+  <h2>Vehicle Location</h2>
+  <google-map [options]="mapOptions" height="200px" width="450px">
+    <map-marker [position]="markerPosition" ></map-marker>
+  </google-map>
+ </div>
+ <div *ngIf="isBrowser" class="t">
+    <h2>Motion Detection</h2>
+    <canvas baseChart width="700" height="250"
+    [type]="'line'"
+    [data]="lineChartData"
+    [options]="lineChartOptions"
+    [legend]="lineChartLegend">
+  </canvas>
+ </div>
+</section>
