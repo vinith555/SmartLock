@@ -10,11 +10,8 @@ export class Apiservice {
     constructor(private http:HttpClient){}
     private url = 'http://localhost:4200/api/smartlock';
 
-    getFirstLock():Observable<boolean>{
-      return this.http.get<boolean>(this.url);
-    }
-    getSecondLock():Observable<boolean>{
-      return this.http.get<boolean>(this.url);
+    getLockStatus():Observable<boolean[]>{
+      return this.http.get<boolean[]>(this.url);
     }
 
     postFirstLock(Onoroff:boolean){

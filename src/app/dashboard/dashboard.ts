@@ -32,9 +32,7 @@ export class Dashboard implements OnInit{
   }
 
   ngOnInit(): void {
-    this.api.getFirstLock().subscribe((data)=>{this.onOff1 = data;},(err)=>{ console.log(err);
-     });
-     this.api.getSecondLock().subscribe((data)=>{this.onOff2 = data;},(err)=>{ console.log(err);
+    this.api.getLockStatus().subscribe((data)=>{this.onOff1 = data[0]; this.onOff2 = data[0]},(err)=>{ console.log(err);
      });
      interval(5000) 
     .pipe(switchMap(() => this.api.getLocation()))
