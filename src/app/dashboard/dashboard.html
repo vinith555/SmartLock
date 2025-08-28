@@ -2,22 +2,22 @@
   <div class="lock-container">
     <div class="locks">
     <h2>Side Lock</h2>
-    <button class="toggle-button" (click)="onClick()">
-      <div class="circle" [ngClass]="{ 'on': onOff }"></div>
-      <p [ngClass]="onOff ? 'toggle-on' : 'toggle-off'"></p>
+    <button class="toggle-button" (click)="onClick1()">
+      <div class="circle" [ngClass]="{ 'on': onOff1 }"></div>
+      <p [ngClass]="onOff1 ? 'toggle-on' : 'toggle-off'"></p>
     </button>
     <div class="status-message">
-    {{ onOff ? 'Locked' : 'Unlocked' }}
+    {{ onOff1 ? 'Locked' : 'Unlocked' }}
     </div>
   </div>
    <div class="locks">
     <h2>Emergency Lock</h2>
-    <button class="toggle-button" (click)="onClick()">
-      <div class="circle" [ngClass]="{ 'on': onOff }"></div>
-      <p [ngClass]="onOff ? 'toggle-on' : 'toggle-off'"></p>
+    <button class="toggle-button" (click)="onClick2()">
+      <div class="circle" [ngClass]="{ 'on': onOff2 }"></div>
+      <p [ngClass]="onOff2 ? 'toggle-on' : 'toggle-off'"></p>
     </button>
     <div class="status-message">
-    {{ onOff ? 'Locked' : 'Unlocked' }}
+    {{ onOff2 ? 'Locked' : 'Unlocked' }}
     </div>
   </div>
   </div>
