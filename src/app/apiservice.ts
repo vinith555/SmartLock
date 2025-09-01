@@ -14,11 +14,8 @@ export class Apiservice {
       return this.http.get<boolean[]>(`${this.url}/status`);
     }
 
-    postFirstLock(Onoroff:boolean){
-      return this.http.post(`${this.url}/sideLock`,Onoroff);
-    }
-    postSecondLock(Onoroff:boolean){
-      return this.http.post(`${this.url}/emergencyLock`,Onoroff);
+    postLock(status:{sideLock:boolean,emergencyLock:boolean}){
+      return this.http.post(`${this.url}/updateLock`,status);
     }
     getLocation():Observable<number[]>{
       return this.http.get<number[]>(`${this.url}/location`);
