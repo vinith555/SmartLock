@@ -69,7 +69,10 @@ export class Dashboard implements OnInit{
 
     ngOnInit() {
       this.locationSubscription = interval(5000).pipe(switchMap(() => this.api.getLocation())).subscribe( 
-        (data) => { console.log('API response:', data); }, 
+        (data) => { console.log('API response:', data); 
+          this.markerPosition = { lat: data.latitude, lng: data.longitude };
+          this.mapOptions = { ...this.mapOptions, center: this.markerPosition };
+        }, 
         (error) => { console.error('API error:', error); 
         } );
     }

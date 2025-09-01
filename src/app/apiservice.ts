@@ -17,7 +17,7 @@ export class Apiservice {
     postLock(status:{sideLock:boolean,emergencyLock:boolean}){
       return this.http.post(`${this.url}/updateLock`,status);
     }
-    getLocation():Observable<number[]>{
-      return this.http.get<number[]>(`${this.url}/location`);
+    getLocation():Observable<{id:number,latitude:number,longitude:number}>{
+      return this.http.get<{id:number,latitude:number,longitude:number}>(`${this.url}/location`);
     }
 }
