@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class Apiservice {
 
     constructor(private http:HttpClient){}
-    private url = 'http://localhost:4200/api/smartlock';
+    private url = 'http://localhost:8080/api/smartlock';
 
     getLockStatus():Observable<boolean[]>{
       return this.http.get<boolean[]>(`${this.url}/status`);

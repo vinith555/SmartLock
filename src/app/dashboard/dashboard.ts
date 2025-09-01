@@ -4,6 +4,7 @@ import { GoogleMapsModule, MapMarker } from '@angular/google-maps';
 import { ChartConfiguration, ChartOptions } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import { Apiservice } from '../apiservice';
+import { catchError, interval, of, Subscription, switchMap, timer } from 'rxjs';
 
 
 @Component({
@@ -26,22 +27,7 @@ export class Dashboard implements OnInit{
 
   constructor(private api:Apiservice) {}
 
-  ngOnInit(): void {
-    this.api.getLockStatus().subscribe((data)=>{this.onOff1 = data[0]; this.onOff2 = data[0]},(err)=>{ console.log(err);});
-    this.api.getLocation().subscribe(
-    (data) => {
-      const newLat = data[0];
-      const newLng = data[1];
-
-      this.markerPosition = { lat: newLat, lng: newLng };
-      this.mapOptions = {
-        ...this.mapOptions,
-        center: { lat: newLat, lng: newLng }  
-      };
-    },
-    (err) => { console.log(err); }
-  );
-  }
+  private locationSubscription!: Subscription;
   
   onClick1(){
     this.onOff1 = !this.onOff1;
@@ -80,4 +66,17 @@ export class Dashboard implements OnInit{
     responsive: true
   };
   public lineChartLegend = true;
+
+    ngOnInit() {
+      this.locationSubscription = interval(5000).pipe(switchMap(() => this.api.getLocation())).subscribe( 
+        (data) => { console.log('API response:', data); }, 
+        (error) => { console.error('API error:', error); 
+        } );
+    }
+
+  ngOnDestroy(): void {
+    if (this.locationSubscription) {
+      this.locationSubscription.unsubscribe();
+    }
+  }
 }
