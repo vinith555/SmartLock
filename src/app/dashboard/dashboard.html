@@ -23,11 +23,12 @@
   </div>
  <div class="map-container">
   <h2>Vehicle Location</h2>
-  <google-map [options]="mapOptions" height="200px" width="450px">
-    <map-marker [position]="markerPosition" ></map-marker>
-  </google-map>
+  <!-- <google-map [center]="center()" [zoom]="15" height="200px" width="450px">
+    <map-marker [position]="markerPosition()" ></map-marker>
+  </google-map> -->
+  <div id="map" style="height: 400px; width: 100%;"></div>
  </div>
- <div *ngIf="isBrowser" class="t">
+ <!-- <div *ngIf="isBrowser" class="t">
     <h2>Motion Detection</h2>
     <canvas baseChart width="700" height="250"
     [type]="'line'"
@@ -35,5 +36,5 @@
     [options]="lineChartOptions"
     [legend]="lineChartLegend">
   </canvas>
- </div>
+ </div> -->
 </section>

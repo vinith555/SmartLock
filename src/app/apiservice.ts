@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +9,9 @@ export class Apiservice {
 
     constructor(private http:HttpClient){}
     private url = 'http://localhost:8080/api/smartlock';
+
+    private lat = 11.5053;
+    private lng = 77.2383;
 
     getLockStatus():Observable<boolean[]>{
       return this.http.get<boolean[]>(`${this.url}/status`);
@@ -20,4 +23,5 @@ export class Apiservice {
     getLocation():Observable<{id:number,latitude:number,longitude:number}>{
       return this.http.get<{id:number,latitude:number,longitude:number}>(`${this.url}/location`);
     }
-}
+  }
+
